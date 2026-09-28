@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sujitha Bodicherla | Aspiring Software Engineer</title>
+<meta name="description" content="Portfolio of Sujitha Bodicherla, a Computer Science undergraduate building ML web apps and cloud data pipelines.">
+<meta property="og:title" content="Sujitha Bodicherla | Aspiring Software Engineer">
+<meta property="og:description" content="ML models, data pipelines and dashboards, built end to end.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sujitha Bodicherla","jobTitle":"Aspiring Software Engineer","email":"bodicherlasujitha@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Bangalore","addressCountry":"IN"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== Design tokens: change colors and fonts here ===== */
+:root{
+  --bg:#0f1f1b; --surface:#172a25; --line:#2a423b; --text:#e9f0e6; --muted:#a3b7ae;
+  --accent:#e8b04a; --accent-ink:#1b1405; --leaf:#86c08f;
+  --serif:'Fraunces',Georgia,serif; --sans:'Instrument Sans',system-ui,sans-serif;
+  --r:14px;
+}
+[data-theme=light]{--bg:#f4f6ef;--surface:#ffffff;--line:#d5ddcf;--text:#14251f;--muted:#4d6259;--accent:#a8620a;--accent-ink:#fff;--leaf:#2f7a45}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--sans);transition:background .3s,color .3s}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;font-weight:700}
+h1{font-size:clamp(2.6rem,7vw,5rem)}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.5rem}
+h3{font-size:1.25rem}
+a{color:inherit}
+p{max-width:65ch}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.skip{position:absolute;left:-999px;background:var(--accent);color:var(--accent-ink);padding:8px 14px;z-index:99}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font:700 1.3rem var(--serif);text-decoration:none;margin-right:auto}
+nav ul{display:flex;gap:22px;list-style:none;padding:0}
+nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem;padding:4px 0;border-bottom:2px solid transparent}
+nav ul a:hover,nav ul a.on{color:var(--text);border-color:var(--accent)}
+.btn{display:inline-block;border:1.5px solid var(--line);background:transparent;color:var(--text);padding:10px 20px;border-radius:999px;font:600 .95rem var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.icon{width:40px;height:40px;padding:0;display:inline-grid;place-items:center}
+#menu{display:none}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.role{color:var(--accent);font-weight:600;min-height:1.8em;margin:14px 0}
+.role span::after{content:"|";margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p.pitch{color:var(--muted);font-size:1.1rem;margin-bottom:24px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--muted);background:var(--surface)}
+.scan{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;position:relative;overflow:hidden}
+.scan svg{width:100%;display:block}
+.scan .line{position:absolute;left:0;right:0;height:3px;background:var(--accent);box-shadow:0 0 18px var(--accent);animation:sweep 4s ease-in-out infinite}
+@keyframes sweep{0%,100%{top:8%}50%{top:78%}}
+.result{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-size:.9rem;color:var(--muted)}
+.result b{color:var(--leaf)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;border-top:1px solid var(--line);padding-top:24px}
+.stats b{display:block;font:700 2rem var(--serif);color:var(--accent)}
+.stats span{color:var(--muted);font-size:.9rem}
+
+/* content */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.card h3{margin-bottom:10px}
+.card .chip{margin:0 6px 8px 0}
+.about{display:grid;grid-template-columns:1.6fr 1fr;gap:28px}
+.about p+p{margin-top:14px}
+.time{border-left:2px solid var(--line);padding-left:26px;position:relative}
+.time::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.time .when{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tabs button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.proj{cursor:pointer;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.proj:hover{transform:translateY(-4px);border-color:var(--accent)}
+.proj .kind{color:var(--leaf);font-weight:600;font-size:.9rem;margin-bottom:6px}
+.proj p{color:var(--muted);margin-bottom:14px}
+.proj .more{margin-top:auto;color:var(--accent);font-weight:600;background:none;border:0;text-align:left;cursor:pointer;font-family:inherit;font-size:1rem;padding:0}
+.hide{display:none!important}
+dialog{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:20px;max-width:640px;width:calc(100% - 32px);padding:28px;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog ul{padding-left:20px;margin:14px 0}
+dialog li{margin-bottom:8px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0}
+.flow span{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:.85rem;animation:pulse 7s infinite;animation-delay:calc(var(--i)*1s)}
+.flow i{color:var(--accent);font-style:normal}
+@keyframes pulse{0%,14%,100%{border-color:var(--line)}7%{border-color:var(--accent);color:var(--accent)}}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.mini span{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.9rem}
+
+/* contact */
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:.9rem}
+input,textarea{width:100%;background:var(--bg);color:var(--text);border:1.5px solid var(--line);border-radius:10px;padding:12px;font:inherit;margin-top:6px}
+textarea{min-height:130px;resize:vertical}
+.err{color:#e5645a;font-size:.85rem;min-height:1.2em;display:block}
+.ok{color:var(--leaf);font-weight:600}
+.copy{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.copy button{padding:6px 14px}
+.avail{display:inline-block;margin-top:18px;color:var(--leaf);font-weight:600}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,80px);background:var(--accent);color:var(--accent-ink);padding:10px 20px;border-radius:999px;font-weight:600;transition:transform .3s;z-index:90}
+#toast.show{transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:820px){
+  .hero .wrap,.about,.g2,.g3{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .mini{grid-template-columns:repeat(2,1fr)}
+  #menu{display:inline-grid}
+  nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:16px 20px;border-bottom:1px solid var(--line)}
+  nav ul.open{display:flex}
+  .dl{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="bar"></div>
+
+<header>
+<nav class="wrap" aria-label="Main">
+  <a class="logo" href="#top">SB</a>
+  <ul id="links">
+    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="btn icon" id="theme" aria-label="Toggle light or dark theme">◐</button>
+  <a class="btn pri dl" href="Sujitha_Bodicherla_Resume.pdf" download>Download résumé</a>
+  <button class="btn icon" id="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+</nav>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+<div class="wrap">
+  <div>
+    <p style="color:var(--muted)">Hi, I'm</p>
+    <h1>Sujitha Bodicherla</h1>
+    <p class="role"><span id="role">Aspiring Software Engineer</span></p>
+    <p class="pitch">A computer science undergraduate who builds end-to-end systems, from trained ML models inside production-ready web apps to cloud data pipelines.</p>
+    <div class="row">
+      <a class="btn pri" href="#projects">View projects</a>
+      <a class="btn" href="#contact">Contact me</a>
+      <a class="btn icon" href="#" aria-label="GitHub">GH</a>
+      <a class="btn icon" href="#" aria-label="LinkedIn">in</a>
+      <a class="btn icon" href="mailto:bodicherlasujitha@gmail.com" aria-label="Email">✉</a>
+    </div>
+    <div class="tags"><span class="chip">CGPA 9.77/10</span><span class="chip">Google Solution Challenge</span><span class="chip">Bangalore, India</span></div>
+  </div>
+  <!-- Replace this frame with a profile photo if you prefer -->
+  <div class="scan" aria-label="Illustration of a leaf being scanned by a disease detection model">
+    <svg viewBox="0 0 300 260" role="img" aria-hidden="true">
+      <path d="M150 20C70 60 40 140 150 240C260 140 230 60 150 20Z" fill="var(--leaf)" opacity=".85"/>
+      <path d="M150 30V235M150 90L105 120M150 130L195 100M150 170L108 195M150 150L190 180" stroke="var(--bg)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="118" cy="150" r="14" fill="#8a5a1e"/><circle cx="184" cy="122" r="10" fill="#8a5a1e"/>
+      <rect x="100" y="132" width="36" height="36" rx="4" fill="none" stroke="var(--accent)" stroke-width="2.500"/>
+    </svg>
+    <div class="line"></div>
+    <div class="result"><span>Leaf scan</span><b>Spots found, class predicted</b></div>
+  </div>
+</div>
+<div class="wrap stats">
+  <div><b>3</b><span>Major projects</span></div><div><b>6</b><span>Python mini-projects</span></div>
+  <div><b>9.77</b><span>CGPA</span></div><div><b>4</b><span>Languages: Python, Java, C, SQL</span></div>
+</div>
+</section>
+
+<section id="about"><div class="wrap rv">
+<h2>About</h2>
+<div class="about">
+  <div>
+    <p>I have hands-on project experience across the full software development lifecycle: designing data pipelines, integrating a trained ML model into a production-ready web application, and writing automated Python programs with error handling and API integration.</p>
+    <p>I'm comfortable with object-oriented programming, data structures, algorithms and collaborative version-controlled development (Git, GitHub, Bitbucket, CI/CD). I pick up new tools quickly, and I enjoy debugging multi-stage data and ML systems end to end.</p>
+  </div>
+  <div class="card"><h3>Currently</h3><p>Studying B.Tech in Computer Science and Engineering, building data and ML projects, and open to internships.</p></div>
+</div>
+</div></section>
+
+<section id="skills"><div class="wrap rv">
+<h2>Skills</h2>
+<div class="grid g3">
+  <div class="card"><h3>Programming</h3><span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">SQL</span><span class="chip">PySpark</span></div>
+  <div class="card"><h3>Web</h3><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+  <div class="card"><h3>CS fundamentals</h3><span class="chip">OOP</span><span class="chip">Data structures</span><span class="chip">Algorithms</span></div>
+  <div class="card"><h3>Cloud and big data</h3><span class="chip">Azure Data Factory</span><span class="chip">Azure Databricks</span><span class="chip">Apache Spark</span><span class="chip">Delta Lake</span><span class="chip">Spark SQL</span></div>
+  <div class="card"><h3>Databases</h3><span class="chip">SQL Server</span><span class="chip">PostgreSQL</span></div>
+  <div class="card"><h3>Tools</h3><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Bitbucket</span><span class="chip">CI/CD</span><span class="chip">VS Code</span><span class="chip">Tableau</span><span class="chip">Power BI</span></div>
+</div>
+</div></section>
+
+<section id="experience"><div class="wrap rv">
+<h2>Experience</h2>
+<div class="time">
+  <h3>Python Development Intern, Saiket Systems</h3>
+  <p class="when">May 2025 to June 2025</p>
+  <p>Completed a structured, task-based Python program of six independent projects, applying data structures, loops, exception handling, string manipulation and API integration.</p>
+  <div class="mini"><span>To-do list app</span><span>Number-guessing game</span><span>File handler with error handling</span><span>Web scraper (BeautifulSoup, Requests)</span><span>Currency converter with live exchange-rate API</span><span>Word-count and text analysis tool</span></div>
+</div>
+</div></section>
+
+<section id="projects"><div class="wrap rv">
+<h2>Projects</h2>
+<div class="tabs" role="group" aria-label="Filter projects">
+  <button class="btn" data-f="all" aria-pressed="true">All</button><button class="btn" data-f="ml" aria-pressed="false">AI / ML</button>
+  <button class="btn" data-f="de" aria-pressed="false">Data engineering</button><button class="btn" data-f="an" aria-pressed="false">Analytics</button>
+</div>
+<div class="grid g3" id="cards"></div>
+</div></section>
+
+<section id="education"><div class="wrap rv">
+<h2>Education and achievements</h2>
+<div class="grid g2">
+  <div class="card"><h3>B.Tech, Computer Science and Engineering</h3><p>Annamacharya Institute of Technology and Sciences, Tirupati</p><p class="chip" style="margin-top:10px">Jul 2024 to Aug 2028 | CGPA 9.77/10</p></div>
+  <div class="card"><h3>Intermediate (MPC)</h3><p>Sri Chaitanya Junior College, Kadapa</p><p class="chip" style="margin-top:10px">2022 to 2024 | 976/1000</p></div>
+  <div class="card"><h3>Certifications</h3><p>Data Visualization, TATA Group<br>Python and SQL, HackerRank</p></div>
+  <div class="card"><h3>Achievements</h3><p>Google Solution Challenge: ML Model Developer on an AI plant disease detection app for smallholder farmers.</p><p style="margin-top:8px">QuizOff 2026 (CampusCrew): took part in India's largest AI quiz, alongside 500,000+ students.</p></div>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap rv">
+<h2>Let's build something together.</h2>
+<div class="grid g2">
+  <form id="form" novalidate>
+    <div><label for="n">Name</label><input id="n" autocomplete="name"><span class="err" id="en"></span></div>
+    <div><label for="e">Email</label><input id="e" type="email" autocomplete="email"><span class="err" id="ee"></span></div>
+    <div><label for="m">Message</label><textarea id="m"></textarea><span class="err" id="em"></span></div>
+    <button class="btn pri" type="submit">Send message</button>
+    <p class="ok" id="done" role="status"></p>
+  </form>
+  <div>
+    <div class="copy"><span>bodicherlasujitha@gmail.com</span><button class="btn" data-copy="bodicherlasujitha@gmail.com">Copy</button></div>
+    <div class="copy"><span>+91 8886476607</span><button class="btn" data-copy="+91 8886476607">Copy</button></div>
+    <div class="copy"><span>Bangalore, India</span></div>
+    <span class="avail">Open to internships and entry-level roles</span>
+  </div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© <span id="yr"></span> Sujitha Bodicherla</span>
+  <span><a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="mailto:bodicherlasujitha@gmail.com">Email</a></span>
+  <a href="#top">Back to top</a>
+</div></footer>
+
+<dialog id="dlg" aria-labelledby="dt"><div id="dbody"></div><div class="row" style="margin-top:18px"><a class="btn pri" href="#">Live demo</a><a class="btn" href="#">GitHub</a><button class="btn" id="close" style="margin-left:auto">Close</button></div></dialog>
+<div id="toast" role="status"></div>
+
+<script>
+/* ===== Project content: edit here ===== */
+const P=[
+{k:"ml",kind:"AI / ML",t:"AI-Powered Plant Disease Detection Web App",s:"A CNN that classifies plant diseases from leaf images, built into a production-ready web app.",
+ b:["Designed and trained a CNN in Python and TensorFlow to classify plant diseases across multiple classes, then integrated it into a web application.","Built the preprocessing pipeline: resizing, normalization and augmentation (rotation, flipping, zoom) to generalize on a limited dataset.","Tuned learning rate, batch size and epochs; evaluated with accuracy, precision, recall and a confusion matrix to reduce mix-ups between similar diseases.","Recognized at Google Solution Challenge, as ML Model Developer on an app for smallholder farmers."],
+ tags:["Python","TensorFlow","CNN","Computer Vision"]},
+{k:"de",kind:"Data engineering",t:"Retail E-Commerce Data Pipeline",s:"A parameterized Azure pipeline moving sales, product and payment data through a medallion architecture.",
+ b:["Built a parameterized Azure Data Factory pipeline ingesting CSV and JSON data into ADLS Gen2 from multiple source systems.","Cleansed, standardized and aggregated data with PySpark on Azure Databricks across bronze, silver and gold layers using Delta Lake.","Added incremental loading with Delta MERGE to avoid full reprocessing, with daily and weekly orchestration through ADF triggers."],
+ tags:["Azure Data Factory","Databricks","PySpark","Delta Lake","ADLS Gen2"],
+ flow:["Sources","ADF","ADLS Gen2","Bronze","Silver","Gold","Reports"]},
+{k:"an",kind:"Analytics",t:"Global Demand Visualization",s:"Interactive Tableau dashboards showing regional demand and customer segments.",
+ b:["Cleaned raw global retail data: removed duplicates, handled nulls, standardized date, currency and region formats.","Joined sales, product and customer tables and created KPIs such as regional sales growth and customer segment share.","Built dashboards with filters and drill-downs to inform supply chain, marketing and product strategy discussions."],
+ tags:["Tableau","Data cleaning","KPI design"]}
+];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const cards=$("#cards"),dlg=$("#dlg");
+cards.innerHTML=P.map((p,i)=>`<article class="card proj" data-k="${p.k}"><span class="kind">${p.kind}</span><h3>${p.t}</h3><p>${p.s}</p><div>${p.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div><button class="more" data-i="${i}">Read details</button></article>`).join("");
+cards.addEventListener("click",e=>{const c=e.target.closest(".proj");if(!c)return;const p=P[c.querySelector(".more").dataset.i];
+ $("#dbody").innerHTML=`<span class="kind" style="color:var(--leaf);font-weight:600">${p.kind}</span><h3 id="dt" style="font-size:1.6rem">${p.t}</h3><ul>${p.b.map(x=>`<li>${x}</li>`).join("")}</ul>${p.flow?`<div class="flow">${p.flow.map((f,i)=>`<span style="--i:${i}">${f}</span>`).join("<i>›</i>")}</div>`:""}<div>${p.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div>`;
+ dlg.showModal();});
+$("#close").onclick=()=>dlg.close();
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+$$(".tabs button").forEach(b=>b.onclick=()=>{$$(".tabs button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+ $$(".proj").forEach(c=>c.classList.toggle("hide",b.dataset.f!=="all"&&c.dataset.k!==b.dataset.f));});
+
+/* theme */
+const root=document.documentElement,saved=localStorage.getItem("theme");
+root.dataset.theme=saved||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
+$("#theme").onclick=()=>{const t=root.dataset.theme==="dark"?"light":"dark";root.dataset.theme=t;localStorage.setItem("theme",t)};
+
+/* mobile menu */
+$("#menu").onclick=e=>{const o=$("#links").classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)};
+$$("#links a").forEach(a=>a.onclick=()=>$("#links").classList.remove("open"));
+
+/* rotating role text */
+const roles=["Aspiring Software Engineer","ML and Data Pipeline Builder","Python Developer"];let ri=0,ci=0,del=false;
+(function type(){const el=$("#role"),w=roles[ri];
+ if(matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=w;return}
+ el.textContent=w.slice(0,ci);ci+=del?-1:1;let d=del?35:70;
+ if(!del&&ci>w.length){del=true;d=1500}else if(del&&ci<0){del=false;ri=(ri+1)%roles.length;d=300}
+ setTimeout(type,d)})();
+
+/* scroll: progress bar, active link, reveal */
+addEventListener("scroll",()=>{const h=document.documentElement;$("#bar").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"});
+const secs=$$("main section[id]"),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$("#links a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s=>io.observe(s));
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rv.unobserve(e.target)}}),{threshold:.1});
+$$(".rv").forEach(r=>rv.observe(r));
+
+/* toast + copy */
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+$$("[data-copy]").forEach(b=>b.onclick=()=>{navigator.clipboard?.writeText(b.dataset.copy).then(()=>toast("Copied!"),()=>toast("Copy failed"))});
+
+/* contact form: opens the visitor's email app. For a real backend, swap for a Formspree fetch to https://formspree.io/f/YOUR_FORM_ID */
+$("#form").addEventListener("submit",e=>{e.preventDefault();
+ const n=$("#n").value.trim(),m=$("#e").value.trim(),g=$("#m").value.trim();
+ $("#en").textContent=n?"":"Enter your name.";
+ $("#ee").textContent=/^\S+@\S+\.\S+$/.test(m)?"":"Enter a valid email address.";
+ $("#em").textContent=g.length>=10?"":"Write a message of at least 10 characters.";
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)||g.length<10)return;
+ location.href=`mailto:bodicherlasujitha@gmail.com?subject=${encodeURIComponent("Portfolio message from "+n)}&body=${encodeURIComponent(g+"\n\nReply to: "+m)}`;
+ $("#done").textContent="Your email app should open with the message ready to send.";e.target.reset();});
+$("#yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
